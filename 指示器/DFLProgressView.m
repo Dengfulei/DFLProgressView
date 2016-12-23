@@ -10,6 +10,7 @@
 @interface DFLProgressView ()
 
 @property (nonatomic , strong) UIImageView *imageView;
+//@property (nonatomic , strong) UILabel *textLabel;
 
 @end
 @implementation DFLProgressView
@@ -65,7 +66,7 @@
 }
 
 - (void)initData {
-    
+    self.layer.masksToBounds = YES;
     self.progressWidth = 3.0;
     
     self.progressColor = [UIColor redColor];
@@ -81,6 +82,10 @@
     self.imageView.frame = CGRectMake((self.frame.size.width - 30)/2, (self.frame.size.height - 30)/2, 30, 30);
     
     [self addSubview:self.imageView];
+    
+//    self.textLabel = [[UILabel alloc] initWithFrame:self.bounds];
+//    self.textLabel.backgroundColor = [UIColor yellowColor];
+//    [self addSubview:self.textLabel];
    
 }
 
@@ -90,6 +95,7 @@
     _percent = percent;
     
     if (_percent < 0) {return;}
+//    self.textLabel.text = [NSString stringWithFormat:@"%.0f％",_percent*100];
     
     [self setNeedsDisplay];
     
